@@ -1,0 +1,8 @@
+user:
+    auth:
+        login: Conexion
+        register: Inscription
+    username: Nom d'utilisateur
+    email: Adresse e-mail
+    password: Mot de passe
+    re-password: Répeter le mot de passe
