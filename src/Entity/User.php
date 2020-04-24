@@ -1,5 +1,12 @@
 <?php
-
+/**
+ * User entity
+ *
+ * @package   App\Manager
+ * @version   0.0.1
+ * @author    Rayzen-dev <rayzen.dev@gmail.com>
+ * @copyright 2020 MineShit
+ */
 
 namespace App\Entity;
 
@@ -11,6 +18,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Class User
+ *
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields="email")
@@ -20,7 +28,10 @@ class User implements UserInterface, \Serializable
 {
 
     /**
-     * @var int
+     * Id of user.
+     *
+     * @var integer
+     *
      * @ORM\Column(type="integer")
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -28,60 +39,93 @@ class User implements UserInterface, \Serializable
     private $id;
 
     /**
+     * Username of user.
+     *
      * @var string
+     *
      * @ORM\Column(type="string", length=64, unique=true)
      * @Assert\NotBlank()
      */
     private $username;
 
     /**
+     * E-mail of user.
+     *
      * @var string
-     * @ORM\Column(type="string", length=128, unique=true)
+     *
+     * @ORM\Column(type="string", length=256, unique=true)
      * @Assert\NotBlank()
      * @Assert\Email()
      */
     private $email;
 
     /**
+     * Password of user.
+     *
      * @var string
+     *
      * @ORM\Column(type="string", length= 60)
      */
     private $password;
 
     /**
+     * Temporarily stores the plain password from the registration form. This field can be validated and is then used to populate the password field (from Symfony Doc).
+     *
      * @var string
+     *
      * @Assert\NotBlank()
      * @Assert\Length(max=4096)
      */
     private $plainPassword;
 
     /**
-     * @var bool
+     * Active account user.
+     *
+     * @var boolean
+     *
      * @ORM\Column(type="boolean")
      */
     private $isActive;
 
     /**
+     * Roles of user.
+     *
      * @var array
+     *
      * @ORM\Column(type="array")
      */
     private $roles;
 
+
+    /**
+     * User constructor.
+     */
     public function __construct()
     {
         $this->isActive = false;
-    }
+
+        $this->roles = ['ROLE_USER'];
+
+    }//end __construct()
+
 
     /**
-     * @return int
+     * Get the id of user.
+     *
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
-    }
+
+    }//end getId()
+
 
     /**
-     * @param string $email
+     * Set value to e-mail property.
+     *
+     * @param string $email E-mail of user.
+     *
      * @return User|null
      */
     public function setEmail(string $email): ?User
@@ -89,34 +133,55 @@ class User implements UserInterface, \Serializable
         $this->email = $email;
 
         return $this;
-    }
+
+    }//end setEmail()
+
 
     /**
+     * Get e-mail of user.
+     *
      * @return string
      */
     public function getEmail(): ?string
     {
         return $this->email;
-    }
+
+    }//end getEmail()
+
 
     /**
-     * @param mixed $password
+     * Set hashed password of user.
+     *
+     * @param string $password Hashed password.
+     *
+     * @return User|null
      */
-    public function setPassword($password): void
+    public function setPassword(string $password): ?User
     {
         $this->password = $password;
-    }
+
+        return $this;
+
+    }//end setPassword()
+
 
     /**
+     * Get plain password of user.
+     *
      * @return string|null
      */
     public function getPlainPassword(): ?string
     {
         return $this->plainPassword;
-    }
+
+    }//end getPlainPassword()
+
 
     /**
-     * @param string $plainPassword
+     * Set plain password of user (encoded later for "real" password).
+     *
+     * @param string $plainPassword Plain password.
+     *
      * @return User|null
      */
     public function setPlainPassword(string $plainPassword): ?User
@@ -124,10 +189,15 @@ class User implements UserInterface, \Serializable
         $this->plainPassword = $plainPassword;
 
         return $this;
-    }
+
+    }//end setPlainPassword()
+
 
     /**
-     * @param string $username
+     * Set username of user.
+     *
+     * @param string $username Username of user.
+     *
      * @return User|null
      */
     public function setUsername(string $username): ?User
@@ -135,18 +205,38 @@ class User implements UserInterface, \Serializable
         $this->username = $username;
 
         return $this;
-    }
 
-    public function getSalt(): void
-    {
-    }
+    }//end setUsername()
 
-    public function eraseCredentials(): void
-    {
-    }
 
     /**
-     * @param array $roles
+     * Returns the salt that was originally used to encode the password.
+     *
+     * @return string|null
+     */
+    public function getSalt()
+    {
+        return null;
+
+    }//end getSalt()
+
+
+    /**
+     * Removes sensitive data from the user.
+     *
+     * @return void
+     */
+    public function eraseCredentials(): void
+    {
+
+    }//end eraseCredentials()
+
+
+    /**
+     * Set roles of user
+     *
+     * @param array $roles Role of user.
+     *
      * @return User|null
      */
     public function setRoles(array $roles): ?User
@@ -154,52 +244,84 @@ class User implements UserInterface, \Serializable
         $this->roles = $roles;
 
         return $this;
-    }
+
+    }//end setRoles()
+
 
     /**
+     * Get roles of user.
+     *
      * @return array
      */
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
+        // Guarantee every user at least has ROLE_USER.
         $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
-    }
+
+    }//end getRoles()
+
 
     /**
+     * Get username of user
+     *
      * @return string|null
      */
     public function getUsername(): ?string
     {
         return $this->username;
-    }
+
+    }//end getUsername()
+
 
     /**
+     * Get password of user.
+     *
      * @return string|null
      */
     public function getPassword(): ?string
     {
         return $this->password;
-    }
 
+    }//end getPassword()
+
+
+    /**
+     * String representation of User object
+     *
+     * @return string
+     */
     public function serialize()
     {
-        return serialize([
-            $this->id,
-            $this->username,
-            $this->password,
-        ]);
-    }
+        return serialize(
+            [
+                $this->id,
+                $this->username,
+                $this->password,
+            ]
+        );
 
-    public function unserialize($serialized)
+    }//end serialize()
+
+
+    /**
+     * String representation of User object
+     *
+     * @param string $serialized The string representation of the User object.
+     *
+     * @return void
+     */
+    public function unserialize(string $serialized)
     {
         list(
             $this->id,
             $this->username,
             $this->password,
             ) = unserialize($serialized, ['allowed_classes' => false]);
-    }
 
-}
+    }//end unserialize()
+
+
+}//end class

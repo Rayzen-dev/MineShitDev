@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {{ form_start(form) }}
+    {{ form_start(form, { 'action': url('register') }) }}
     {% set formChildren = form.children %}
     {% for input in formChildren %}
         {% if input.vars.name not in ['plainPassword', '_token'] %}
@@ -21,5 +21,6 @@
         {% endif %}
     {% endfor %}
 
+    <button type="submit">Save</button>
     {{ form_end(form) }}
 {% endblock %}
