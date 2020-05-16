@@ -1,3 +1,5 @@
+form:
+    error: Une erreur est survenue lors de la soumission du formulaire
 user:
     auth:
         login: Conexion
@@ -6,3 +8,8 @@ user:
     email: Adresse e-mail
     password: Mot de passe
     re-password: Répeter le mot de passe
+    registration_confirmation: Inscription réussi
+navbar:
+    home: Accueil
+    vote: Vote
+    shop: Boutique

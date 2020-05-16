@@ -39,6 +39,12 @@ class UserManager extends BaseManager
             $user->setPassword($password);
         }
 
+        // If database does not have a user, we force this one to be an administrator.
+        if (true === empty($this->rc->getUserRepository()->checkIfDatabaseHasUser())) {
+            $user->setRoles(['ROLE_ADMIN']);
+            $user->setIsActive(true);
+        }
+
         try {
             $this->persistEntity($user, true);
         } catch (\Exception $exception) {

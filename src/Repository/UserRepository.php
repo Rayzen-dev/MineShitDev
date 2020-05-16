@@ -16,4 +16,20 @@ namespace App\Repository;
 class UserRepository extends BaseRepository
 {
 
+    /**
+     * Check if database contains at least one user.
+     *
+     * @return array|null
+     */
+    public function checkIfDatabaseHasUser()
+    {
+        $res = $this->createQueryBuilder('u')
+            ->select('u.id')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult();
+
+        return $res;
+    }
+
 }//end class

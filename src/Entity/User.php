@@ -289,6 +289,22 @@ class User implements UserInterface, \Serializable
 
 
     /**
+     * Set if account is active
+     *
+     * @param bool $isActive Active account or not.
+     *
+     * @return User
+     */
+    public function setIsActive(bool $isActive): User
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+
+    }
+
+
+    /**
      * String representation of User object
      *
      * @return string
@@ -313,7 +329,7 @@ class User implements UserInterface, \Serializable
      *
      * @return void
      */
-    public function unserialize(string $serialized)
+    public function unserialize($serialized)
     {
         list(
             $this->id,

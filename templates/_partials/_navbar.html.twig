@@ -1,0 +1,14 @@
+<header>
+    <div class="banner">
+        <h1>{{ application.app_name }}</h1>
+        <img src="{{ asset('img/logo.png') }}" alt="server_logo" title="logo minecraft serveur">
+    </div>
+</header>
+<nav class="navbar">
+    <ul class="navbar-nav">
+        <li class="navbar-item"><a href="{{ url('homepage') }}" class="navbar-link">{{ 'navbar.home'|trans }}</a></li>
+        {#<li class="navbar-item"><a href="#" class="navbar-link">{{ 'navbar.vote'|trans }}</a></li>
+        <li class="navbar-item"><a href="#" class="navbar-link">{{ 'navbar.shop'|trans }}</a></li>#}
+        <li class="navbar-item"><a href="javascript:void(0);" onclick="toggleAuthForm('show');" class="navbar-link">{{ 'user.auth.register'|trans ~ '/' ~ 'user.auth.login'|trans }}</a></li>
+    </ul>
+</nav>

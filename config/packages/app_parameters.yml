@@ -1,4 +1,5 @@
 parameters:
     locale: fr
+    current_theme: ''
     application:
         app_name: MineShit, a powerfull CMS

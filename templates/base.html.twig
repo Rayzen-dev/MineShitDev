@@ -1,15 +1,51 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}{{ application.app_name }}{% endblock %}</title>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{{ application.app_name }}{% endblock %}</title>
+    <link rel="shortcut icon" type="image/png" href="{{ asset('img/logo.png') }}"/>
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+    <!-- Styles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block stylesheets %}{% endblock %}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+<body>
+<div class="auth-overlay">
+    <div class="auth-panel">
+        <div class=" auth-block animate__animated  animate__flipInX">
+            <button role="button" class="close" onclick="toggleAuthForm('hide')">
+                &times;
+            </button>
+            <div class="login-block">
+
+            </div>
+            <div class="registration-block">
+                {{ render(controller('App\\Controller\\User\\AuthController::registerAction')) }}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="app">
+    {% include '_partials/_navbar.html.twig' %}
+    {% block body %}{% endblock %}
+    {% include '_partials/_footer.html.twig' %}
+</div>
+
+{# Flash messages #}
+<div class="box-alert">
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }} alert-dismissible fade show">
+                {{ message|trans }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+</div>
+
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/nicescroll.min.js') }}"></script>
+<script src="{{ asset('js/main.js') }}"></script>
+{% block javascripts %}{% endblock %}
+</body>
 </html>

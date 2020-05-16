@@ -1,0 +1,26 @@
+{{ form_start(form, { 'action': url('register') , 'attr' : { 'class': 'auth-form' } }) }}
+        {% set formChildren = form.children %}
+        {% for input in formChildren %}
+            {% if input.vars.name not in ['plainPassword', '_token'] %}
+                <div class="auth__form-group">
+                    {{ form_widget(input, { 'attr' : { 'class': 'auth__form-control', 'placeholder': '' } }) }}
+                    {{ form_label(input, null, { 'label_attr' : { 'class': 'auth__form-label' } }) }}
+                    {{ form_errors(input) }}
+                </div>
+            {% endif %}
+
+            {% if input.vars.name == 'plainPassword' %}
+                {% for field in input %}
+                    <div class="auth__form-group">
+                        {{ form_widget(field, { 'attr' : { 'class': 'auth__form-control', 'placeholder': '' } }) }}
+                        {{ form_label(field, null, { 'label_attr' : { 'class': 'auth__form-label' } }) }}
+                        {{ form_errors(field) }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+
+<button type="submit">S'inscrire</button>
+<hr>
+Déjà membre? <a href="javascript:void(0);">Se connecter</a>
+{{ form_end(form) }}
