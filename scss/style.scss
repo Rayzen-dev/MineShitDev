@@ -1,0 +1,104 @@
+//	Import variables
+@import "variables.scss";
+
+//  Import function
+@import "functions/functions";
+
+//	Reset CSS
+@import "reset";
+
+//  Include mixins
+@import "mixins/mixins";
+
+//	Create grid
+@import "components/grid";
+
+//  Create form
+@import "components/form";
+
+// Create navbar
+@import "components/nav";
+
+//  Create table style
+@import "components/tables";
+
+//  Create typo
+@import "components/typo";
+
+//  Create button
+@import "components/button";
+
+//  Create alerts
+@import "components/alert";
+
+//  Create cards
+@import "components/card";
+
+//  Create helper classes
+@import "components/helpers";
+
+//  Separated footer
+@import "components/footer";
+
+//  Custom
+body {
+  background-image: url('img/background.png');
+  background-size: cover;
+  background-attachment: fixed;
+  color: #333;
+}
+
+.app.blurred {
+  filter: blur(10px);
+  -webkit-filter: blur(10px);
+}
+
+.auth-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,.75);
+  z-index: 999;
+}
+
+.auth-panel {
+  color: #fff;
+  max-width: 350px;
+  width: 100%;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+
+  .auth-block {
+    overflow: hidden;
+    position: relative;
+    margin: 0 10px;
+    padding: 40px 20px 20px;
+    background: #2c3e50;
+    @include radius(5px);
+    @include shadow(0, 0, 10px, $blue);
+  }
+
+  .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.content {
+  background: $body-background;
+  padding: 30px 20px;
+
+  &.no-background {
+    background: transparent;
+  }
+}

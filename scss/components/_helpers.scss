@@ -1,0 +1,18 @@
+@each $helper, $color in $helpers {
+  .btn-#{$helper} {
+    color: color-yiq($color);
+    border-color: $color;
+    background-color: lighten($color, 10%);
+    @include transition((background, border-radius));
+
+    &:hover {
+      background-color: $color;
+    }
+  }
+
+  .alert-#{$helper} {
+    color: color-yiq($color);;
+    border-color: $color;
+    background-color: lighten($color, 10%);
+  }
+}

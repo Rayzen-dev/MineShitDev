@@ -1,0 +1,22 @@
+.btn {
+  cursor: pointer;
+  padding: $btn-padding;
+  border: $btn-border-width solid $btn-border-color;
+  background: transparent;
+  color: $btn-font-color;
+  font-size: $btn-font-size;
+  @include radius($btn-border-radius);
+  @include transition((border-radius));
+
+  &-sm {
+    padding: $btn-padding-sm;
+  }
+
+  &-lg {
+    padding: $btn-padding-lg;
+  }
+
+  &:hover {
+    @include radius(0);
+  }
+}

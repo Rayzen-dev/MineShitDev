@@ -1,0 +1,53 @@
+header {
+  padding: 3em 0;
+  position: relative;
+}
+
+.banner {
+  text-align: center;
+}
+
+nav.navbar {
+  background: #333;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+ul.navbar-nav {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+li.navbar-item {
+  display: inline-block;
+  margin: auto;
+}
+
+a.navbar-link {
+  position: relative;
+  color: color-yiq(#333);
+  display: block;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 14px;
+
+  &:before {
+    content: '';
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: 9px;
+    position: absolute;
+    border-bottom: 3px solid green;
+    width: 0;
+    @include transition('width');
+  }
+
+  &:hover:before {
+    width: 75%;
+  }
+
+}

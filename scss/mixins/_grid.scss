@@ -1,0 +1,24 @@
+@mixin break-point($bp) {
+  @if($bp == 0) {
+    @content;
+  } @else {
+    @media all and (min-width: $bp * 1px) {
+      @content
+    }
+  }
+}
+
+
+@mixin classe_col($modifieur,$bp, $colonne){
+  @include break-point ($bp) {
+    @for $i from 1 through $colonne {
+      .col#{$modifieur}-#{$i} {
+        margin-bottom: 1em;
+        text-align: justify;
+        padding-right: 30px;
+        float: left;
+        width: (100*$i/$colonne) * 1%;
+      }
+    }
+  }
+}

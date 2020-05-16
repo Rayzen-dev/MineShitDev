@@ -1,0 +1,25 @@
+.card {
+  border: 1px solid #ddd;
+  background: #fff;
+  @include transition('all');
+  @include radius(2px);
+  overflow: hidden;
+
+  &-cover {
+    text-align: center;
+    //height: 100px;
+    img {
+      max-height: 100px;
+    }
+  }
+
+  &-content {
+    height: 150px;
+    overflow-y: auto;
+    padding: 10px;
+  }
+
+  &:hover {
+    @include shadow(0, 2px, 7px, rgba(0,0,0,.25))
+  }
+}

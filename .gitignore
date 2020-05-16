@@ -21,10 +21,6 @@
 
 /src/Migrations
 
-### SASS files
-/scss
-/scss/*
-
 ### IDE files
 /.idea
 /.idea/*

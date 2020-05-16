@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=Inter:400,700&display=swap');
+
+//  Default values
+$default_font: 'Inter', sans-serif;
+$transition-time: .25s;
+$body-background: #f9f9f9;
+
+//  Colors
+$red: #ff6961;
+$blue: #0070C0;
+$yellow: #FDEE00;
+$orange: #ffb347;
+$green: #77DD77;
+
+$yiq-contrasted-threshold: 150 !default;
+$yiq-text-dark: #000;
+$yiq-text-light: #fff;
+
+//  Helpers colors
+$helpers: (
+        'primary': $blue,
+        'danger': $red,
+        'warning': $yellow,
+        'info': $orange,
+        'success': $green
+);
+
+//break point pour les différents supports:
+
+$bp_lg: 1024;
+$bp_md: 768;
+$bp_sm: 600;
+$bp_xs: 320;
+
+$colonne: 12;
+
+$map: (
+        '-xs' : $bp_xs,
+        '-sm' : $bp_sm,
+        '-md' : $bp_sm,
+        '-lg' : $bp_lg,
+);
+
+//  Buttons
+$btn-padding: 5px;
+$btn-padding-sm: 2.5px;
+$btn-padding-lg: 7px;
+$btn-border-width: 1px;
+$btn-border-color: #333;
+$btn-border-radius: 5px;
+$btn-font-color: #333;
+$btn-font-size: 90%;
+
+//  Alerts
+$alert-padding: 15px;
+
+
+// Auth-form
+$auth-block-padding: 20px;

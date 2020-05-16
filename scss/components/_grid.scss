@@ -1,0 +1,33 @@
+@import "../variables";
+
+@import "../mixins/grid";
+
+.container {
+  max-width: $bp_lg * 1px;
+  margin: auto;
+
+  &-fluid {
+    width: 100%;
+  }
+}
+
+.row {
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  flex: 0 1 auto;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  margin-right: -30px;
+}
+
+@each $modifieur,$bp in $map {
+  @include classe_col($modifieur,$bp, $colonne);
+}

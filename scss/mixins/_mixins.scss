@@ -1,0 +1,28 @@
+@mixin radius($size) {
+  -webkit-border-radius: $size;
+  -moz-border-radius: $size;
+  border-radius: $size;
+}
+
+@mixin transition($elements: (all), $time: $transition-time) {
+  $tmpImplodeElement: implode($elements, ", ");
+
+  -webkit-transition-property: $tmpImplodeElement;
+  -moz-transition-property: $tmpImplodeElement;
+  -ms-transition-property: $tmpImplodeElement;
+  -o-transition-property: $tmpImplodeElement;
+  transition-property: $tmpImplodeElement;
+
+  -webkit-transition-duration: $transition-time;
+  -moz-transition-duration: $transition-time;
+  -ms-transition-duration: $transition-time;
+  -o-transition-duration: $transition-time;
+  transition-duration: $transition-time;
+}
+
+@mixin shadow($x, $y, $blur, $color, $inset: '') {
+  box-shadow: $x $y $blur $color unquote($inset);
+  -webkit-box-shadow: $x $y $blur $color unquote($inset);
+  -moz-box-shadow: $x $y $blur $color unquote($inset);
+  -o-box-shadow: $x $y $blur $color unquote($inset);
+}
